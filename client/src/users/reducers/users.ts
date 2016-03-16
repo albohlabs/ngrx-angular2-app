@@ -1,6 +1,6 @@
 import { Action, Reducer, Store } from '@ngrx/store';
 import { List, Map, Record, fromJS } from 'immutable';
-import { normalize, arrayOf, Schema } from 'normalizr';
+import { normalize, arrayOf } from 'normalizr';
 
 import { IUser, IUsers, userSchema, UserRecord } from '../models/users';
 

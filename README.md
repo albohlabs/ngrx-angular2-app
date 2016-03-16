@@ -1,18 +1,26 @@
-## Reactive RESTful Angular 2 application with ngrx store
+## ngrx/Angular 2 app using Normalizr & ImmutableJS 
 
-A RESTful master-detail application built using Angular 2 and [ngrx store](https://github.com/ngrx/store).
+This is a much reduced version of meenie's [best practices ngrx store example](https://github.com/ngrx/angular2-store-example).
+I used it to help me understand the best practises for developing an Angular 2 app using ngrx.
 
-### Getting Started
 
-There are two main parts to this application. The first is the server which we are using `json-server` to simulate a REST api. The second part is the Angular 2 application which we will use `webpack-dev-server` to display.  
+  - [Normalizr](https://github.com/gaearon/normalizr) & [ImmutableJS](https://facebook.github.io/immutable-js/)
+  - ["Smart" & "Dumb" Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.d2pgf7r58)
+  - [<code>AsyncPipe</code>](https://angular.io/docs/ts/latest/guide/pipes.html#!#the-stateful-asyncpipe-) to handle subscription to Observables
 
-To get started run the commands below.
+### Quick start
 
+```bash
+# clone the repo
+git clone git@github.com:meenie/angular2-store-example.git
+
+# change directory to our repo
+cd angular2-store-example
+
+# install the repo with npm
+npm install
+
+# start the server
+npm start
 ```
-$ git clone https://github.com/simpulton/ngrx-rest-app.git
-$ cd ngrx-rest-app
-$ npm install
-$ npm start
-```
-
-Then navigate to [http://localhost:3001](http://localhost:3001) in your browser.
+go to [http://0.0.0.0:3000](http://0.0.0.0:3000) in your browser

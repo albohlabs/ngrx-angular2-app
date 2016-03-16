@@ -2,7 +2,7 @@ import { Injectable } from 'angular2/core';
 import { Action, Reducer, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/subject/BehaviorSubject';
-import { normalize, arrayOf, Schema } from 'normalizr';
+import { Schema } from 'normalizr';
 import { List, Map, Record, fromJS } from 'immutable';
 import { ApiService } from '../services/api';
 
@@ -77,8 +77,13 @@ export class Users {
             }, []);
         });
 
-        // mergeMap() takes two arguments, an observable and function and invokes the function
-        // with the original action and the payload from the observable.
+        // mergeMap() takes two arguments, an observable to merge and function.
+        // the function is invoked with the value from the original observable
+        // and the value from the merged observable. In the code below the
+        // 'action' comes from the original observable and the payload comes
+        // from the merged observable (i.e. api.createUser)
+        // the value returned from the function is passed to its subscribers.
+
         // 'action' is object created in this.actions$.next({type: ADD_USER, payload: user});
         // 'payload' is the response from api.createUser(action.payload) http request
         // the return object {type: ADDED_USER, payload} is the value returned from the observable
@@ -118,7 +123,7 @@ export class Users {
 
         Observable
             .merge(adds, deletes, loads, loadsOne, patchesOne)
-            .do(action => console.log(11, action))
+            .do(action => console.log(11, 'action', action))
             .subscribe((action:Action) => _store.dispatch(action));
     }
 
