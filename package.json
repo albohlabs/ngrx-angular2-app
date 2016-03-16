@@ -1,7 +1,7 @@
 {
   "name": "ngrx-angular2-app",
   "version": "0.0.1",
-  "description": "Simple REST website in Angular 2 and NGRX",
+  "description": "Simple ngrx/Angular 2 app using Normalizr & ImmutableJS",
   "repository": "https://github.com/screenm0nkey/ngrx-angular2-app",
   "scripts": {
     "clean": "rimraf node_modules doc typings && npm cache clean",
