@@ -1,0 +1,6 @@
+<users-detail
+  [user]="user$ | async"
+  [loading]="users.loading$ | async"
+  (deleteUser)="users.deleteUser($event)"
+  (patchUser)="users.patchUser($event)">
+</users-detail>
