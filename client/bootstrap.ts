@@ -2,6 +2,7 @@
 import {provide} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {provideStore} from '@ngrx/store';
+import {Devtools, instrumentStore} from '@ngrx/devtools';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 

@@ -22,6 +22,8 @@ const ADD_USER = 'ADD_USER';
 const LOAD_USER = 'LOAD_USER';
 const LOAD_USERS = 'LOAD_USERS';
 
+// Schema('users') maps to the users in normalizedData.entities.users
+// Schema('cats') would result in normalizedData.entities.cats
 export const userSchema = new Schema('users');
 
 // Record: a record is like an object with default values for some keys.
@@ -44,7 +46,7 @@ export interface IUser {
 // in reducer we see initialState: IUsers = fromJS({result...});
 export interface IUsers extends Map {
     result: List<Number>;
-    entities: {users: Map<Number, IUser>};
+    entities: { users: Map<Number, IUser>};
     adding: boolean;
     loading: boolean;
 }
