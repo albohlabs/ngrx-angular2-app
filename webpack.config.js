@@ -47,6 +47,7 @@ module.exports = {
             2374, // 2374 -> Duplicate number index signature
             2375, // 2375 -> Duplicate string index signature
             2314,
+            2304,
             2661,
             2307,
             2339 // property does not exist

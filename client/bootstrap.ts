@@ -1,18 +1,16 @@
 //main entry point
 import {provide} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
-import {provideStore} from '@ngrx/store';
-import {Devtools, instrumentStore} from '@ngrx/devtools';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {App} from './src/app'
 
-import {users} from './src/users/reducers/users';
-import {App} from './src/app';
+// NOTE. the ngrx provideStore() is configured in app.ts as the devtools instrumentStore() needs to
+// called directly after it https://github.com/ngrx/devtools
 
 bootstrap(App, [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
-    provide(LocationStrategy, { useClass: HashLocationStrategy }),
-    provideStore({users})
+    provide(LocationStrategy, { useClass: HashLocationStrategy })
 ])
 .catch(err => console.error(err));
