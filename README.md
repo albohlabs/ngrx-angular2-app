@@ -1,7 +1,8 @@
 ## ngrx/Angular 2 app using Normalizr & ImmutableJS 
 
-This is a much reduced version of meenie's [best practices ngrx store example](https://github.com/ngrx/angular2-store-example).
-I used it to help me understand the best practises for developing an Angular 2 app using ngrx.
+This is a much reduced, edited version of meenie's [best practices ngrx store example](https://github.com/ngrx/angular2-store-example).
+I've added the devtools and middleware and I used it to help me understand the best practises for developing an Angular 2 app using ngrx.
+
 
 
   - [Normalizr](https://github.com/gaearon/normalizr) & [ImmutableJS](https://facebook.github.io/immutable-js/)

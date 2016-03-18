@@ -3,9 +3,21 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { UsersRoute } from './users/routes/UsersRoute';
 import { API_PROVIDERS } from './users/services/api';
-import {provideStore} from '@ngrx/store';
+import {provideStore, usePreMiddleware, usePostMiddleware, Middleware} from "@ngrx/store";
 import {Devtools, instrumentStore} from '@ngrx/devtools';
 import {users} from './users/reducers/users';
+
+const actionLog : Middleware = action => {
+    return action.do(val => {
+        console.warn('DISPATCHED ACTION: ', val)
+    });
+};
+
+const stateLog : Middleware = state => {
+    return state.do(state => {
+        console.info('NEW STATE: ',state, state.users.toJS())
+    });
+};
 
 @Component({
   selector: 'app',
@@ -13,6 +25,8 @@ import {users} from './users/reducers/users';
   providers: [
       provideStore({users}),
       instrumentStore(),
+      usePreMiddleware(actionLog),
+      usePostMiddleware(stateLog),
       API_PROVIDERS
   ],
   directives: [ ROUTER_DIRECTIVES, Devtools ]
