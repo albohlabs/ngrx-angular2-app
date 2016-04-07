@@ -9,7 +9,7 @@ import { Users } from '../models/users';
   selector: 'UsersRoute',
   template: `<router-outlet></router-outlet>`,
   directives: [ ROUTER_DIRECTIVES ],
-  providers: [ Users ]
+  providers: [ Users ] // make service available to child views
 })
 @RouteConfig([
   {

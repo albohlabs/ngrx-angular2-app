@@ -61,7 +61,7 @@ export class ApiService {
 
         return Observable
             .merge(http$)
-            .do(action => console.log(13, action))
+            .do(action => console.log(13, 'angular.http$', action))
             .delay(2000);
     }
 }

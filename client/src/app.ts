@@ -6,13 +6,16 @@ import { API_PROVIDERS } from './users/services/api';
 import {provideStore, usePreMiddleware, usePostMiddleware, Middleware} from "@ngrx/store";
 import {Devtools, instrumentStore} from '@ngrx/devtools';
 import {users} from './users/reducers/users';
+// note the reducer name will be used as the state property name to store state relative to the reducer
+// so state.users.entities or state.users.loading
 
+// ngrx middleware logs the action
 const actionLog : Middleware = action => {
     return action.do(val => {
-        console.warn('DISPATCHED ACTION: ', val)
+        console.info('DISPATCHED ACTION: ', val)
     });
 };
-
+// ngrx middleware logs the state
 const stateLog : Middleware = state => {
     return state.do(state => {
         console.info('NEW STATE: ',state, state.users.toJS())
@@ -24,9 +27,9 @@ const stateLog : Middleware = state => {
   template: require('./app.html'),
   providers: [
       provideStore({users}),
-      instrumentStore(),
-      usePreMiddleware(actionLog),
-      usePostMiddleware(stateLog),
+      instrumentStore(), // devtools
+      usePreMiddleware(actionLog), //middleware
+      usePostMiddleware(stateLog),//middleware
       API_PROVIDERS
   ],
   directives: [ ROUTER_DIRECTIVES, Devtools ]
@@ -34,7 +37,7 @@ const stateLog : Middleware = state => {
 @RouteConfig([
   {
      path: '/',
-     redirectTo: ['/Users', 'UsersList']
+     redirectTo: ['/Users', 'UsersList'] // same as writing '/Users/UsersList'
   },
   {
     path: '/users/...',

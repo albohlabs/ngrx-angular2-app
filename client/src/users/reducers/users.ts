@@ -24,7 +24,8 @@ var initialState:IUsers = fromJS({
     adding: false,
     loading: false
 });
-
+// note the reducer name will be used as the state property name to store state relative to the reducer
+// so state.users.entities or state.users.loading
 export const users:Reducer<any> = (state = initialState, action:Action) => {
     switch (action.type) {
         case LOADING_USERS:
@@ -48,6 +49,7 @@ export const users:Reducer<any> = (state = initialState, action:Action) => {
             });
 
         case LOADED_USER:
+            // You should use withMutations when you want to group several changes on an object.
             return state.withMutations(map => {
                 map.set('loading', false);
                 if (map.get('result').indexOf(action.payload.id) === -1) {
